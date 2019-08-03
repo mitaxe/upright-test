@@ -1,32 +1,32 @@
 
-import { GET_TOP_STORIES } from '../constants/actionTypes'
+import { GET_TOP_STORIES } from '../constants/actionTypes';
 
-export default function stories (state = {}, action) {
-  const { type, error, payload } = action;
+export default function stories(state = {}, action) {
+  const { type, payload } = action;
 
   switch (type) {
     case GET_TOP_STORIES.REQUEST: {
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     }
     case GET_TOP_STORIES.SUCCESS: {
       return {
         ...state,
         loading: false,
-        topStories: payload
-      }
+        topStories: payload,
+      };
     }
     case GET_TOP_STORIES.FAIL: {
       return {
         ...state,
         loading: false,
-        error: payload
-      }
+        error: payload,
+      };
     }
     default: {
       return state;
     }
-  };
-};
+  }
+}

@@ -1,1 +1,1 @@
-export { default } from './SecondScreen'
+export { default } from './SecondScreen';

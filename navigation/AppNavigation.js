@@ -1,19 +1,19 @@
-import { createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation'
-import FirstScreenView from '../views/FirstScreen'
-import SecondScreenView from '../views/SecondScreen'
+import { createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import FirstScreenView from '../views/FirstScreen';
+import SecondScreenView from '../views/SecondScreen';
 
 
 const MainStack = createStackNavigator({
   FirstScreen: FirstScreenView,
-  SecondScreen: SecondScreenView
-})
+  SecondScreen: SecondScreenView,
+});
 
 const RootNavigation = createSwitchNavigator(
   {
-    Main: MainStack
+    Main: MainStack,
   }, {
-    initialRouteName: 'Main'
-  }
-)
+    initialRouteName: 'Main',
+  },
+);
 
-export default createAppContainer(RootNavigation)
+export default createAppContainer(RootNavigation);

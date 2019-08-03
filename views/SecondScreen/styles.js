@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   loaderContainer: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 2,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   container: {
@@ -17,16 +17,16 @@ const styles = StyleSheet.create({
   },
 
   floatingBtn: {
-    width: 60,  
+    width: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,   
-    borderRadius: 30,            
-    backgroundColor: '#ee6e73',                                    
-    position: 'absolute',                                          
-    bottom: 10,                                                    
-    right: 10, 
-  }
-})
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#ee6e73',
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+  },
+});
 
-export default styles
+export default styles;

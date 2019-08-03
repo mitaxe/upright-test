@@ -1,1 +1,1 @@
-export * from './storiesActions'
+export * from './storiesActions';

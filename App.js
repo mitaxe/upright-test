@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import { AppLoading } from 'expo';
 import { store } from './config'
@@ -6,39 +6,33 @@ import { Asset } from 'expo-asset';
 
 import Navigation from './navigation';
 
-export default class App extends Component  {
-  constructor () {
-    super();
-    this.state = {
-      isLoadingComplete: false
-    };
+export default function App () {
+  const [ isLoadingComplete, setLoadingComplete ] = React.useState(false)
+
+  handleLoadFinish = () => {
+    setLoadingComplete(true)
   }
-
-  handleLoadFinish = () => this.setState({ isLoadingComplete: true })
-
-  handleLoadError = () => {
-      // e.g Sentry
-      console.warn(error);
-  }
-
-  render () {
-    const { isLoadingComplete } = this.state
-    if (!isLoadingComplete) {
-      return (
-        <AppLoading
-          startAsync={loadResourcesAsync}
-          onError={this.handleLoadError}
-          onFinish={this.handleLoadFinish}
-        />
-      );
-    }
-
+  
+  if (!isLoadingComplete) {
     return (
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
+      <AppLoading
+        startAsync={loadResourcesAsync}
+        onError={handleLoadError}
+        onFinish={handleLoadFinish}
+      />
     );
   }
+
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  )
+}
+
+function handleLoadError () {
+  // e.g Sentry
+  console.warn(error);
 }
 
 async function loadResourcesAsync() {

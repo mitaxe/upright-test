@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { View, ActivityIndicator, ViewPropTypes } from 'react-native'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, ActivityIndicator, ViewPropTypes } from 'react-native';
 
-import commonStyles from './styles'
+import commonStyles from './styles';
 
-export const SMALL_SIZE = 'small'
-export const LARGE_SIZE = 'large'
+export const SMALL_SIZE = 'small';
+export const LARGE_SIZE = 'large';
 
 const LoadingView = ({ color, size, style }) =>
   <View style={[commonStyles.centerInside, style]}>
@@ -15,11 +15,11 @@ const LoadingView = ({ color, size, style }) =>
 LoadingView.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
-  style: ViewPropTypes.style
-}
+  style: ViewPropTypes.style,
+};
 
 LoadingView.defaultProps = {
-  size: LARGE_SIZE
-}
+  size: LARGE_SIZE,
+};
 
-export default LoadingView
+export default LoadingView;

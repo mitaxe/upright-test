@@ -3,7 +3,7 @@ import stories from './storiesReducer';
 
 
 const appReducer = combineReducers({
-  stories
+  stories,
 });
 
 
