@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
+import { useStoriesData } from '../../hooks';
 import NewsList from '../../components/NewsList';
 
 import styles from './styles';
 
-function FirstScreen ({ stories, navigation }) {
-  const { loading, topStories = [], getTopStories } = stories
+function FirstScreen ({ navigation }) {
+  const { loading, topStories = [], getTopStories } = useStoriesData()
 
   useEffect(() => {
     getTopStories();
@@ -36,4 +37,4 @@ FirstScreen.propTypes = {
   navigation: PropTypes.object
 }
 
-export default inject(({ store }) => ({ stories: store.stories }))(observer(FirstScreen));
+export default observer(FirstScreen);

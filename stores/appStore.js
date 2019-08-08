@@ -1,5 +1,7 @@
-import { observable, } from 'mobx';
+import { observable, remove, } from 'mobx';
+import remotedev from 'mobx-remotedev';
 
+@remotedev
 class AppStore {
   @observable version = '1.0'
 }

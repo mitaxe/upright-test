@@ -1,6 +1,8 @@
 import { observable, action, runInAction } from 'mobx';
+import remotedev from 'mobx-remotedev';
 import axios from 'axios';
 
+@remotedev
 class StoriesStore {
   @observable loading = false;
   @observable topStories = [];
