@@ -1,21 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
 import { View, Image } from 'react-native';
-import { getTopStories } from '../../actions';
+import { observer, inject } from 'mobx-react';
 import NewsList from '../../components/NewsList';
 
 import styles from './styles';
 
-export default function FirstScreen (props) {
-  const stories = useSelector(state => state.stories)
-  const dispatch = useDispatch()
-
-  const { loading, topStories = [] } = stories
-  const { navigation } = props
+function FirstScreen ({ stories, navigation }) {
+  const { loading, topStories = [], getTopStories } = stories
 
   useEffect(() => {
-    dispatch(getTopStories())
+    getTopStories();
   }, [])
 
   return (
@@ -40,3 +35,5 @@ FirstScreen.propTypes = {
   }),
   navigation: PropTypes.object
 }
+
+export default inject(({ store }) => ({ stories: store.stories }))(observer(FirstScreen));

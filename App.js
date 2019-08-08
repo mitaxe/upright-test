@@ -1,8 +1,8 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import { AppLoading } from 'expo';
-import { store } from './config'
 import { Asset } from 'expo-asset';
+import { Provider } from 'mobx-react';
+import * as stores from './stores'
 
 import Navigation from './navigation';
 
@@ -24,7 +24,7 @@ export default function App () {
   }
 
   return (
-    <Provider store={store}>
+    <Provider store={stores}>
       <Navigation />
     </Provider>
   )
