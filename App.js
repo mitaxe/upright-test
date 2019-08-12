@@ -38,7 +38,7 @@ function handleLoadError () {
 async function loadResourcesAsync() {
   await Promise.all([
     Asset.loadAsync([
-      require('./assets/images/splash.png'),
+      require('./assets/images/duck.png'),
     ])
   ]);
 }

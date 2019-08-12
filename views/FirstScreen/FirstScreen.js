@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { throttle as _throttle } from 'lodash';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import { observer } from 'mobx-react';
@@ -8,11 +9,16 @@ import NewsList from '../../components/NewsList';
 import styles from './styles';
 
 function FirstScreen ({ navigation }) {
-  const { loading, topStories = [], getTopStories } = useStoriesData()
+  const { loading, topStories = [], getTopStories, getSetOfStories } = useStoriesData()
+  const throttledGetSetOfStories = useRef(_throttle((value) => getSetOfStories(value), 500))
 
   useEffect(() => {
     getTopStories();
   }, [])
+
+  handleLoadMoreStories = () => {
+    throttledGetSetOfStories.current(20);
+  }
 
   return (
     <View style={styles.container}>
@@ -20,7 +26,12 @@ function FirstScreen ({ navigation }) {
         style={styles.duck}
         source={require('../../assets/images/duck.png')}
       />
-      <NewsList loading={loading} stories={topStories} navigation={navigation} />
+      <NewsList
+        loading={loading}
+        stories={topStories}
+        loadMoreStories={handleLoadMoreStories}
+        navigation={navigation}
+        />
     </View>
   )
 }

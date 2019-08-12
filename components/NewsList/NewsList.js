@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 import LoadingView from '../LoadingView';
 
@@ -16,7 +17,7 @@ function StoryTitle (item, navigation) {
   )
 };
 
-export default function NewsList ({ stories, loading, navigation }) {
+function NewsList ({ stories, loadMoreStories, loading, navigation }) {
   if (loading) {
     return (
       <LoadingView />
@@ -28,6 +29,8 @@ export default function NewsList ({ stories, loading, navigation }) {
       data={stories}
       keyExtractor={item => item.id.toString()}
       renderItem={({ item }) => StoryTitle(item, navigation)}
+      onEndReached={loadMoreStories}
+      onEndReachedThreshold={0.5}
     />
   )
 };
@@ -36,4 +39,7 @@ NewsList.propTypes = {
   loading: PropTypes.bool,
   stories: PropTypes.array,
   navigation: PropTypes.object,
+  loadMoreStories: PropTypes.func.isRequired
 };
+
+export default observer(NewsList)
